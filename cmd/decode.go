@@ -37,7 +37,7 @@ var decode = &cobra.Command{
 		fmt.Printf("    SRD: %d\n", srd)
 		fmt.Println("===== CONTENT =====")
 
-		o, err := opr.Parse(e.Content)
+		o, err := opr.ParseV2Content(e.Content)
 		if err != nil {
 			cmd.PrintErr(err)
 		}
@@ -57,7 +57,9 @@ var decode = &cobra.Command{
 		}
 		fmt.Printf("Assets:\n")
 
-		for _, a := range o.GetOrderedAssetsFloat() {
+		o2 := &opr.V4Content{V2Content: *o}
+
+		for _, a := range o2.GetOrderedAssetsFloat() {
 			fmt.Printf("\t%4s = %f\n", a.Name, a.Value)
 		}
 

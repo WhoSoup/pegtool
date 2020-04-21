@@ -20,7 +20,7 @@ var analyze = &cobra.Command{
 	Short: "Analyzes an EBlock",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		cli := &factom.Client{FactomdServer: "http://spoon:8088"}
+		cli := &factom.Client{FactomdServer: "http://courtesy-node.factom.com:80"}
 
 		var eb factom.EBlock
 		eb.KeyMR = factom.NewBytes32FromString(args[0])
